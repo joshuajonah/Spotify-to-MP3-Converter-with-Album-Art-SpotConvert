@@ -1,0 +1,99 @@
+
+
+
+.title {
+    padding-top: 2.5%;
+    padding-bottom: 5%;
+    font-size: 450%;
+    font-family: 'IM Fell English', serif;
+
+}
+
+
+#URIExplained{
+    font-style: italic;
+    margin-bottom: 5%;
+}
+
+#uriform {
+    margin-top: 1%;
+    margin-bottom: 3%;
+
+}
+
+#guidePic{
+    border-style: solid;
+    border-color: #1bbc9b;
+    border-width: 7px;
+    margin-bottom: 5%;
+    width: 100%;
+}
+#LeftSide, #RightSide, body{
+}
+
+
+#albumCover{
+    padding-bottom: 5%;
+    width: 100%;
+}
+
+#titleAndArtist{
+
+    font-family: 'IM Fell English', serif;
+    font-size: 160%;
+    margin-bottom: 20%;
+    margin-top: 20%;
+}
+
+#centerOfSite{
+}
+#songsNotDownloaded{
+    margin-top: 5%;
+    margin-bottom: 2.5%;
+    color: black;
+    font-size: 10%;
+}
+#error {
+    margin-top: 5%;
+    margin-bottom: 2.5%;
+    color: black;
+    font-size: 1%;
+}
+
+#stayPatient{
+    margin-top: 15%;
+}
+
+#started{
+    padding-top: 1%;
+    padding-bottom: 1%;
+    border-radius: 7px;
+    color: white;
+    font-size: 150%;
+    background-color: #4FAA4F;
+}
+
+#queued{
+    padding-top: 1%;
+    padding-bottom: 1%;
+    border-radius: 7px;
+    color: white;
+    font-size: 150%;
+    background-color: orange;
+}
+#done{
+    padding-top: 1%;
+    padding-bottom: 1%;
+    border-radius: 7px;
+    color: white;
+    font-size: 150%;
+    background-color: purple;
+}
+#failed{
+    padding-top: 1%;
+    padding-bottom: 1%;
+    border-radius: 7px;
+    color: white;
+    font-size: 150%;
+    background-color: red;
+}

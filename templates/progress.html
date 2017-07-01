@@ -1,0 +1,141 @@
+{% extends "template.html" %}
+
+{% block title %}Progress {% endblock %}
+{% block center_content %}
+
+    <div class="row">
+        <div class="col-md-5">
+            <div id="albumCover">
+
+            </div>
+        </div>
+        <div class="col-md-7">
+            <div id="status"></div>
+            <div id="titleAndArtist">One sec... putting job into queue</div>
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-12">
+            <div id="percentage"></div>
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <div id="download"></div>
+
+        <p id="error"></p>
+
+        <div id="songsNotDownloaded"></div>
+
+    </div>
+
+
+    <div class="row">
+        <script type="text/javascript">
+  ( function() {
+    if (window.CHITIKA === undefined) { window.CHITIKA = { 'units' : [] }; };
+    var unit = {"calltype":"async[2]","publisher":"vdyagilev5","width":550,"height":250,"sid":"Chitika Default"};
+    var placement_id = window.CHITIKA.units.length;
+    window.CHITIKA.units.push(unit);
+    document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
+}());
+</script>
+<script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
+        <p id="stayPatient">Spot Convert takes approx. < 20s to convert a video into a song. Stay patient :) </p>
+    </div>
+
+{% endblock %}
+{% block scripts %}
+    <script>
+        var xhttp;
+        if (window.XMLHttpRequest) {
+            xhttp = new XMLHttpRequest();
+        } else {
+            // code for IE6, IE5
+            xhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+
+
+        var djangoData;
+        var time = 1500
+        var file;
+        var status;
+
+        var ajax = setInterval(function () {
+
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    djangoData = this.responseText;
+                    djangoObject = JSON.parse(djangoData);
+
+                    if (djangoObject['job_id'] == "NO SUCH JOB") {
+                        document.getElementsByClassName("body").innerHTML = "There is no such job. Please restart the process. "
+                    }
+                    else {
+
+
+                        status = djangoObject['status'];
+                        if (status == "started") {
+                            document.getElementById("status").innerHTML = "<p id=started> Converting </p>";
+                        }
+                        else if (status == "queued") {
+                            document.getElementById("status").innerHTML = "<p id=queued> Waiting for avaliable worker; all are busy </p>";
+                        }
+                        else if (status == "failed") {
+                            document.getElementById("status").innerHTML = "<p id=failed> FAILED: Retry or submit bug </p>";
+                        }
+                        else if (status == "finished") {
+                            document.getElementById("status").innerHTML = "<p id=done> Finished </p>";
+                        }
+
+
+                        var titleAndArtist = djangoObject['progress']['titleAndArtist'];
+                        document.getElementById("titleAndArtist").innerHTML = titleAndArtist
+
+                        var totalTracks = djangoObject['progress']['totalTracks'];
+                        var currentTrack = djangoObject['progress']['currentTrack'];
+                        var percentage = String(Math.floor((currentTrack / totalTracks * 100)));
+
+                        document.getElementById("percentage").innerHTML = "<div class=\"progress\"> <div class=\"progress-bar progress-bar-success\" role=\"progressbar\" aria-valuenow=\"" + currentTrack + "\" aria-valuemin=\"0\" aria-valuemax=\"" + totalTracks + "\" style=\"width: " + percentage + "%\"> " + percentage + "% </div> </div>"
+
+
+                        file = djangoObject['zip'];
+                        var songsNotDownloaded = djangoObject['songsNotDownloaded'];
+
+                        if (songsNotDownloaded != null) {
+                            document.getElementById("songsNotDownloaded").innerHTML = "* Songs not downloaded due to error (rerun and should fix!): " + djangoObject['songsNotDownloaded'];
+                        }
+                        var image = djangoObject['progress']['albumCover'];
+                        document.getElementById("albumCover").innerHTML = "<img src=" + image + " alt= albumcover height=100% width=100%>";
+
+                        var error = djangoObject['progress']["errorDownloadingSong"];
+
+                        if (error != "None") {
+                            document.getElementById("error").innerHTML = "" + titleAndArtist + " had error of " + error;
+                        }
+                    }
+
+
+                }
+                ;
+
+            };
+            xhttp.open("GET", "/progress/{{ job_id }}", async = true);
+            xhttp.send();
+
+            if (status == "finished") {
+                clearInterval(ajax);
+                document.getElementById("download").innerHTML = "<form action=/finished/" + file + " method=get> <input type=submit id=downloadButton class=\"btn btn-success\" value=Download Your Music! name=Submit /> </form>"
+                //window.location = "http://localhost:8000/finished/" + file;
+            }
+
+        }, time);
+
+
+    </script>
+{% endblock %}

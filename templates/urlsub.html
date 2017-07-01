@@ -1,0 +1,23 @@
+{% extends "template.html" %}
+{% block title %}Convert Spotify Music into MP3 | Spot Convert {% endblock %}
+{% load static %}
+
+{% block center_content %}
+        <h3 id="caption">Converts Spotify music into MP3's through YouTube</h3>
+    
+    <form id = "uriform" class="form-inline" name="form" action="{% url "index" %}" method="post">{% csrf_token %}
+        <div class="form-group">
+            <input type="text" class="form-control" name="uri">
+        </div>
+        <button type="submit" value="Begin" class="btn btn-success">Convert</button>
+        
+    </form>
+    <p id="URIExplained">Insert Spotify Album or Playlist URI or URL </p>
+    <p>* works best with original albums, no remastered albums etc. (Trims playlists to 500 songs max.) </p>
+
+    <div class="row">
+        <img src="{% static "images/getUriImage.png" %}" alt="How to get URI" class="howToPhoto" width="50%" id="guidePic" >
+        <p id="disclaimer">Disclaimer: Use at own discretion! To be used only on content that you have rights for.
+<br> Contact spotconvert@hmamail.com with bugs or questions 
+</p>
+{% endblock %}

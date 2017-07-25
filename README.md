@@ -11,7 +11,7 @@ How to use?
 3. Start a new virtualenv with `virtualenv .` and activate it with `source bin/activate`.
 4. Install the python requirements with `pip install -r requirements.txt` 
 5. Install and configure redis-server.
-6. Install ffmpeg with `sudo apt-get install ffmpeg`.
+6. Install ffmpeg and set it's path in the settings. Default: `/usr/bin/ffmpeg`.
 7. Run the `./manage.py runserver`.
 8. Run a Django-RQ process with `python manage.py rqworker`.
 9. Browse to Spotify online player and copy the url of the album or playlist you want to use.

@@ -61,7 +61,7 @@ ROOT_URLCONF = 'keef.urls'
 
 TEMPLATE_PATH = os.path.join(BASE_DIR, 'templates')
 
-FFMPEG_PATH = os.path.join(BASE_DIR, 'scripts/')
+FFMPEG_PATH = '/usr/bin/ffmpeg'
 
 TEMPLATES = [
     {

@@ -1,1 +1,0 @@
-in this folder include either the windows, mac, or linux version of the FFMPEG library

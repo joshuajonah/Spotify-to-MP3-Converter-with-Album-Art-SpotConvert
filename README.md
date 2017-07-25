@@ -11,9 +11,10 @@ How to use?
 3. Start a new virtualenv with `virtualenv .` and activate it with `source bin/activate`.
 4. Install the python requirements with `pip install -r requirements.txt` 
 5. Install and configure redis-server.
-6. Run the `./manage.py runserver`.
-7. Run a Django-RQ process with `python manage.py rqworker`.
-8. Browse to Spotify online player and copy the url of the album or playlist you want to use.
-9. Browse to your local server at `http://localhost:8000` and enter that url you got in the last step.
+6. Install ffmpeg with `sudo apt-get install ffmpeg`.
+7. Run the `./manage.py runserver`.
+8. Run a Django-RQ process with `python manage.py rqworker`.
+9. Browse to Spotify online player and copy the url of the album or playlist you want to use.
+10. Browse to your local server at `http://localhost:8000` and enter that url you got in the last step.
 
 

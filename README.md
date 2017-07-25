@@ -2,6 +2,7 @@
 
 SpotConvert converts a Spotify Playlist, Album, or song, into a collection of corresponding MP3 files, with Album Artwork, and ZIPs it and sends to the user to download. It works through YouTube, YouTube-DL, Spotipy, FFMPEG, and Django in the backend, with Django-RQ running the process workers. 
 
+It does this by finding the corresponding Youtube videos of the songs you submit from the Spotify API, it does not get the audio from Spotify.
 
 
 How to use?

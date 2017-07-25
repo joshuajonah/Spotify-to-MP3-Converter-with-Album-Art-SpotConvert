@@ -64,4 +64,5 @@ class Song():
 
         }
         with youtube_dl.YoutubeDL(ydl_opts) as ydl:
+            print(url)
             ydl.download([url])

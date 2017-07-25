@@ -25,7 +25,13 @@ SECRET_KEY = 'secret'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['http://www.spotconvert.com','www.spotconvert.com','https://www.spotconvert.com','45.55.179.218', 'localhost', '127.0.0.1', 'http://spotconvert.com/', 'spotconvert.com']
+ALLOWED_HOSTS = ['http://www.spotconvert.com',
+                 'www.spotconvert.com',
+                 'https://www.spotconvert.com',
+                 '45.55.179.218',
+                 'localhost', '127.0.0.1',
+                 'http://spotconvert.com/',
+                 'spotconvert.com']
 
 
 # Application definition
@@ -124,8 +130,8 @@ USE_L10N = True
 USE_TZ = True
 
 STATICFILES_FINDERS = (
-'django.contrib.staticfiles.finders.FileSystemFinder',
-'django.contrib.staticfiles.finders.AppDirectoriesFinder'
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder'
 )
 
 # Static files (CSS, JavaScript, Images)

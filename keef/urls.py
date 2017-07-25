@@ -16,7 +16,8 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 
-from downloaderApp.views import index, progress, status_page, cleanqueue, serveFile, fileAndReturnIndex
+from downloaderApp.views import index, progress, status_page, cleanqueue, serveFile, \
+    fileAndReturnIndex
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
@@ -27,9 +28,4 @@ urlpatterns = [
     url(r'^django-rq/', include('django_rq.urls')),
     url(r'^cleanqueue/', cleanqueue, name='cleanqueue'),
     url(r'^finished/(?P<zipFile>.+)$', fileAndReturnIndex, name="fileAndReturnIndex"),
-
-
 ]
-
-
-

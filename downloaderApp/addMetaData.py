@@ -38,12 +38,12 @@ def addMetaData(playlistName, url, title, artist, album, track):
     audio.save(filename, v2_version=3, v1=2)
     try:
         os.remove(dir + "/img.jpg")
-    except:
+    except OSError:
         pass
 
 
 def turnToZip(output_name, dir_name, delete=True):
     shutil.make_archive(output_name, 'zip', dir_name)
 
-    if delete == True:
+    if delete is True:
         shutil.rmtree(dir_name)

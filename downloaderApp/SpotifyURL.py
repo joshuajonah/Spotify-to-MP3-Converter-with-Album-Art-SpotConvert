@@ -21,16 +21,16 @@ def getSongs(uri):
     https://open.spotify.com/album/3CCnGldVQ90c26aFATC1PW
     """
 
-    #this method converts URL into URI
+    # this method converts URL into URI
     if uri.startswith("https://"):
         almostURI = uri.replace("https://", "")
         almostURI = almostURI.split('/')
-        #if its album
+        # if its album
         if almostURI[1] == "user":
             uri = "{}:{}:{}:{}:{}".format("spotify", almostURI[1], almostURI[2], almostURI[3], almostURI[4])
         elif almostURI[1] == "album":
             uri = "{}:{}:{}".format("spotify", almostURI[1], almostURI[2])
-    
+
     elif uri.startswith("http://"):
         almostURI = uri.replace("http://", "")
         almostURI = almostURI.split('/')
@@ -48,21 +48,19 @@ def getSongs(uri):
         elif almostURI[1] == "album":
             uri = "{}:{}:{}".format("spotify", almostURI[1], almostURI[2])
 
-
     songs = {}
     # if album do this
 
-
     if uri.split(':')[1] == 'album':
 
-        randomlyGeneratedFolderName = 'album{}'.format(random.randint(100,1000000))
+        randomlyGeneratedFolderName = 'album{}'.format(random.randint(100, 1000000))
         # use this one to get individual songs
         tracks = sp.album_tracks(uri.split(':')[2])
         for song in tracks['items']:
             try:
                 t = sp.track(song['id'])
                 title = song['name']
-                title = title.replace("/","-")
+                title = title.replace("/", "-")
                 artist = song['artists'][0]['name']
                 album = t['album']['name']
                 track = song['track_number']
@@ -91,8 +89,7 @@ def getSongs(uri):
                 results = sp.next(results)
                 tracks.extend(results['items'])
             return tracks
-        #change this to get over +100 tracks, use this method but its a little weird, FIGURE IT OUR NIGGA
-
+        # change this to get over +100 tracks, use this method but its a little weird, FIGURE IT OUR NIGGA
 
         tracks = get_playlist_tracks(username, playlist_id)
         if len(tracks) < 500:

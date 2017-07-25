@@ -1,1 +1,10 @@
-.pyc
+*.pyc
+*__pycache__
+album*.zip
+bin/
+etc/
+include/
+lib/
+local/
+share/
+

@@ -6,9 +6,14 @@ SpotConvert converts a Spotify Playlist, Album, or song, into a collection of co
 
 How to use?
 
-1. Run the manage.py runserver
-2. Run a redis server with redis-server
-3. Run one or a few worker processes with Django-RQ (* python manage.py rqworker)
-4. Go onto the website and input a URI or URL
+1. Clone with `git clone https://github.com/joshuajonah/Spotify-to-MP3-Converter-with-Album-Art-SpotConvert.git`.
+2. Navigate to the cloned directory.
+3. Start a new virtualenv with `virtualenv .` and activate it with `source bin/activate`.
+4. Install the python requirements with `pip install -r requirements.txt` 
+5. Install and configure redis-server.
+6. Run the `./manage.py runserver`.
+7. Run a Django-RQ process with `python manage.py rqworker`.
+8. Browse to Spotify online player and copy the url of the album or playlist you want to use.
+9. Browse to your local server at `http://localhost:8000` and enter that url you got in the last step.
 
 
